@@ -1,6 +1,6 @@
 package cleancode.minesweeper.tobe.cell;
 
-public abstract class Cell2 {
+public abstract class Cell {
 
     protected static final String FLAG_SIGN = "⚑";
     protected static final String UNCHECKED_SIGN = "□";

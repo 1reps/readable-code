@@ -1,6 +1,6 @@
 package cleancode.minesweeper.tobe.cell;
 
-public class NumberCell extends Cell2 {
+public class NumberCell extends Cell {
 
     private final int nearbyLandMineCount;
 

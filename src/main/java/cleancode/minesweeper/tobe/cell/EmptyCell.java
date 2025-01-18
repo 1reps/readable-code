@@ -1,6 +1,6 @@
 package cleancode.minesweeper.tobe.cell;
 
-public class EmptyCell extends Cell2 {
+public class EmptyCell extends Cell {
 
     private static final String EMPTY_SIGN = "■";
 
