@@ -5,7 +5,7 @@ import cleancode.minesweeper.tobe.io.ConsoleInputHandler;
 import cleancode.minesweeper.tobe.io.ConsoleOutputHandler;
 import cleancode.studycafe.asis.exception.GameException;
 
-public class Minesweeper {
+public class Minesweeper implements GameInitializable {
 
     private final GameBoard gameBoard;
     private final BoardIndexConverter boardIndexConverter = new BoardIndexConverter();
@@ -17,9 +17,14 @@ public class Minesweeper {
         gameBoard = new GameBoard(gameLevel);
     }
 
+    @Override
+    public void initialize() {
+        gameBoard.initializeGame();
+    }
+
     public void run() {
         consoleOutputHandler.showGameStartComments();
-        gameBoard.initializeGame();
+        initialize();
 
         while (true) {
             try {
