@@ -1,4 +1,4 @@
-package cleancode.minesweeper.tobe;
+package cleancode.studycafe.asis.exception;
 
 public class AppException extends RuntimeException {
 

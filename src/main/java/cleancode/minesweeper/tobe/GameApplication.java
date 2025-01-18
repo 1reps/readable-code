@@ -5,6 +5,10 @@ import cleancode.minesweeper.tobe.gamelevel.Beginner;
 import cleancode.minesweeper.tobe.gamelevel.GameLevel;
 import cleancode.minesweeper.tobe.gamelevel.Middle;
 import cleancode.minesweeper.tobe.gamelevel.VeryBeginner;
+import cleancode.minesweeper.tobe.io.ConsoleInputHandler;
+import cleancode.minesweeper.tobe.io.ConsoleOutputHandler;
+import cleancode.minesweeper.tobe.io.InputHandler;
+import cleancode.minesweeper.tobe.io.OutputHandler;
 
 public class GameApplication {
 
@@ -14,7 +18,10 @@ public class GameApplication {
         GameLevel middle = new Middle();
         GameLevel advanced = new Advanced();
 
-        Minesweeper minesweeper = new Minesweeper(veryBeginner);
+        InputHandler inputHandler = new ConsoleInputHandler();
+        OutputHandler outputHandler = new ConsoleOutputHandler();
+
+        Minesweeper minesweeper = new Minesweeper(veryBeginner, inputHandler, outputHandler);
         minesweeper.run();
     }
 

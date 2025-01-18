@@ -1,6 +1,6 @@
 package cleancode.minesweeper.tobe;
 
-import cleancode.studycafe.asis.exception.GameException;
+import cleancode.studycafe.asis.exception.AppException;
 
 public class BoardIndexConverter {
 
@@ -11,7 +11,6 @@ public class BoardIndexConverter {
         return convertColFrom(cellInputCol, colSize);
     }
 
-
     public int getSelectedRowIndex(String cellInput, int rowSize) {
         String cellInputRow = cellInput.substring(1);
         return convertRowFrom(cellInputRow, rowSize);
@@ -20,7 +19,7 @@ public class BoardIndexConverter {
     private int convertRowFrom(String cellInputRow, int rowSize) {
         int rowIndex = Integer.parseInt(cellInputRow) - 1;
         if (rowIndex < 0 || rowIndex >= rowSize) {
-            throw new GameException("잘못된 입력 입니다.");
+            throw new AppException("잘못된 입력 입니다.");
         }
 
         return rowIndex;
@@ -29,7 +28,7 @@ public class BoardIndexConverter {
     private int convertColFrom(char cellInputCol, int colSize) {
         int colIndex = cellInputCol - BASE_CHAR_FOR_COL;
         if (colIndex < 0 || colIndex >= colSize) {
-            throw new GameException("잘못된 입력 입니다.");
+            throw new AppException("잘못된 입력 입니다.");
         }
 
         return colIndex;
