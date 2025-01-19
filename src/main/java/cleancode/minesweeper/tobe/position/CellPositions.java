@@ -18,7 +18,7 @@ public class CellPositions {
     }
 
     public static CellPositions from(Cell[][] board) {
-        List<CellPosition> cellPositions = new ArrayList<CellPosition>();
+        List<CellPosition> cellPositions = new ArrayList<>();
 
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
@@ -38,8 +38,7 @@ public class CellPositions {
     }
 
     public List<CellPosition> subtract(List<CellPosition> positionListToSubtract) {
-        ArrayList<CellPosition> cellPositions = new ArrayList<>(positions);
-
+        List<CellPosition> cellPositions = new ArrayList<>(positions);
         CellPositions positionsToSubtract = CellPositions.of(positionListToSubtract);
 
         return cellPositions.stream()

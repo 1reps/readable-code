@@ -19,11 +19,12 @@ public class Cells {
         List<Cell> cellList = Arrays.stream(cells)
             .flatMap(Arrays::stream)
             .toList();
-        return Cells.of(cellList);
+        return of(cellList);
     }
 
     public boolean isAllChecked() {
-        return this.cells.stream()
+        return cells.stream()
             .allMatch(Cell::isChecked);
     }
+
 }

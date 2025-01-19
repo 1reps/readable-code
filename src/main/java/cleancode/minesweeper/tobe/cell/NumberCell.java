@@ -2,9 +2,8 @@ package cleancode.minesweeper.tobe.cell;
 
 public class NumberCell implements Cell {
 
-    private final int nearbyLandMineCount;
-
     private final CellState cellState = CellState.initialize();
+    private final int nearbyLandMineCount;
 
     public NumberCell(int nearbyLandMineCount) {
         this.nearbyLandMineCount = nearbyLandMineCount;
@@ -21,14 +20,14 @@ public class NumberCell implements Cell {
     }
 
     @Override
-    public String getSign() {
+    public CellSnapshot getSnapshot() {
         if (cellState.isOpened()) {
-            return String.valueOf(nearbyLandMineCount);
+            return CellSnapshot.ofNumber(nearbyLandMineCount);
         }
         if (cellState.isFlagged()) {
-            return FLAG_SIGN;
+            return CellSnapshot.ofFlag();
         }
-        return UNCHECKED_SIGN;
+        return CellSnapshot.ofUnchecked();
     }
 
     @Override
