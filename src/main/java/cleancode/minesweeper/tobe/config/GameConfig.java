@@ -1,4 +1,4 @@
-package cleancode.studycafe.tobe.config;
+package cleancode.minesweeper.tobe.config;
 
 import cleancode.minesweeper.tobe.gamelevel.GameLevel;
 import cleancode.minesweeper.tobe.io.InputHandler;
