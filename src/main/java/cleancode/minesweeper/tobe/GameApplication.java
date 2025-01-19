@@ -18,4 +18,5 @@ public class GameApplication {
         minesweeper.initialize();
         minesweeper.run();
     }
+
 }
