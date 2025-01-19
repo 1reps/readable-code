@@ -1,7 +1,8 @@
 package cleancode.minesweeper.tobe.io;
 
 import cleancode.minesweeper.tobe.GameBoard;
-import cleancode.studycafe.asis.exception.AppException;
+import cleancode.minesweeper.tobe.GameException;
+import cleancode.minesweeper.tobe.position.CellPosition;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -22,7 +23,8 @@ public class ConsoleOutputHandler implements OutputHandler {
         for (int row = 0; row < board.getRowSize(); row++) {
             System.out.printf("%2d  ", row + 1);
             for (int col = 0; col < board.getColSize(); col++) {
-                System.out.print(board.getSign(row, col) + " ");
+                CellPosition cellPosition = CellPosition.of(row, col);
+                System.out.print(board.getSign(cellPosition) + " ");
             }
             System.out.println();
         }
@@ -58,7 +60,7 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
-    public void showExceptionMessage(AppException e) {
+    public void showExceptionMessage(GameException e) {
         System.out.println(e.getMessage());
     }
 
@@ -66,4 +68,5 @@ public class ConsoleOutputHandler implements OutputHandler {
     public void showSimpleMessage(String message) {
         System.out.println(message);
     }
+
 }
