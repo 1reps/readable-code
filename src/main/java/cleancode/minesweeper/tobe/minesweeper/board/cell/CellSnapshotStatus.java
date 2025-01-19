@@ -8,10 +8,10 @@ public enum CellSnapshotStatus {
     NUMBER("숫자"),
     UNCHECKED("확인 전");
 
+    private final String description;
+
     CellSnapshotStatus(String description) {
         this.description = description;
     }
-
-    private final String description;
 
 }

@@ -30,8 +30,12 @@ public class RelativePosition {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         RelativePosition that = (RelativePosition) o;
         return deltaRow == that.deltaRow && deltaCol == that.deltaCol;
     }
