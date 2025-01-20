@@ -1,8 +1,9 @@
 package cleancode.studycafe.tobe;
 
 import cleancode.studycafe.tobe.exception.AppException;
-import cleancode.studycafe.tobe.io.StudyCafeFileHandler;
 import cleancode.studycafe.tobe.io.StudyCafeIOHandler;
+import cleancode.studycafe.tobe.io.provider.LockerPassProvider;
+import cleancode.studycafe.tobe.io.provider.SeatPassProvider;
 import cleancode.studycafe.tobe.model.order.StudyCafePassOrder;
 import cleancode.studycafe.tobe.model.pass.StudyCafePassType;
 import cleancode.studycafe.tobe.model.pass.StudyCafeSeatPass;
@@ -14,8 +15,14 @@ import java.util.Optional;
 
 public class StudyCafePassMachine {
 
-    private final StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
+    private final SeatPassProvider seatPassProvider;
+    private final LockerPassProvider lockerPassProvider;
     private final StudyCafeIOHandler studyCafeIOHandler = new StudyCafeIOHandler();
+
+    public StudyCafePassMachine(SeatPassProvider seatPassProvider, LockerPassProvider lockerPassProvider) {
+        this.seatPassProvider = seatPassProvider;
+        this.lockerPassProvider = lockerPassProvider;
+    }
 
     public void run() {
         try {
@@ -44,7 +51,7 @@ public class StudyCafePassMachine {
     }
 
     private List<StudyCafeSeatPass> findPassCandidatesBy(StudyCafePassType studyCafePassType) {
-        StudyCafeSeatPasses allPasses = studyCafeFileHandler.readStudyCafePasses();
+        StudyCafeSeatPasses allPasses = seatPassProvider.getSeatPasses();
 
         // 일급 컬렉션을 이용해서 가공 로직을 일급 컬렉션한테 부여한다.
         // 가공 로직 테스트 코드 작성도 가능하게됨!
@@ -74,7 +81,7 @@ public class StudyCafePassMachine {
     }
 
     private Optional<StudyCafeLockerPass> findLockerPassCandidateBy(StudyCafeSeatPass pass) {
-        StudyCafeLockerPasses allLockerPasses = studyCafeFileHandler.readLockerPasses();
+        StudyCafeLockerPasses allLockerPasses = lockerPassProvider.getLockerPass();
 
         return allLockerPasses.findLockerPassBy(pass);
     }
