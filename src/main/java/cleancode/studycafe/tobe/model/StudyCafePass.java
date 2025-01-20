@@ -22,6 +22,20 @@ public class StudyCafePass {
         return passType;
     }
 
+    public boolean isSamePassType(StudyCafePassType passType) {
+        return this.passType == passType;
+    }
+
+    public boolean isSameDurationType(StudyCafeLockerPass lockerPass) {
+        return lockerPass.isSamePassType(this.passType)
+            && lockerPass.isSameDuration(this.duration);
+    }
+
+    // Locker를 사용할 수 없는 케이스가 추가될경우를 대비 (LOCKER_TYPES)
+    public boolean cannotUseLocker() {
+        return this.passType.isNotLockerType();
+    }
+
     public int getDuration() {
         return duration;
     }
@@ -46,5 +60,4 @@ public class StudyCafePass {
         }
         return "";
     }
-
 }
